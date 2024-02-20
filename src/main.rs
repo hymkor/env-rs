@@ -22,6 +22,9 @@ fn env(args: std::env::Args) -> Result<(), Box<dyn std::error::Error>> {
             }
         }
     }
+    for (key, value) in std::env::vars() {
+        println!("{}={}", key, value)
+    }
     Ok(())
 }
 
