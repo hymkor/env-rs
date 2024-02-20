@@ -15,6 +15,15 @@ fn env(args: std::env::Args) -> Result<(), Box<dyn std::error::Error>> {
         } else if field[0] == "--version" {
             println!("{}", version::VERSION);
             return Ok(());
+        } else if field[0] == "-h" || field[0] == "--help" {
+            println!("{}", version::VERSION);
+            println!("Usage:");
+            println!("  env {{options}}... {{NAME=VALUE}}...  COMMAND ARGS...");
+            println!("Options:");
+            println!("  -v --debug   print verbose information");
+            println!("     --version output version information");
+            println!("  -h --help    display this help");
+            return Ok(());
         } else {
             if debug {
                 println!("call {}", arg);
