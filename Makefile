@@ -42,4 +42,8 @@ release:
 tag:
 	git tag $(VERSION)
 
+version:
+	echo pub const VERSION: ^&str = "$(NAME) $(VERSION) for Windows"^;> .\src\version.rs
+	cargo fmt
+
 .PHONY: dist manifest release

@@ -1,3 +1,5 @@
+mod version;
+
 fn env(args: std::env::Args) -> Result<(), Box<dyn std::error::Error>> {
     let mut args_ = args.skip(1);
     let mut debug = false;
@@ -10,6 +12,9 @@ fn env(args: std::env::Args) -> Result<(), Box<dyn std::error::Error>> {
             std::env::set_var(field[0].clone(), field[1].clone())
         } else if field[0] == "-v" || field[0] == "--debug" {
             debug = true
+        } else if field[0] == "--version" {
+            println!("{}", version::VERSION);
+            return Ok(());
         } else {
             if debug {
                 println!("call {}", arg);
