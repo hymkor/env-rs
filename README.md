@@ -2,5 +2,8 @@ env.exe for Windows
 ===================
 
 ```
-$ env [-d] {NAME=VALUE}...  COMMAND ARGS...
+$ env {options} {NAME=VALUE}...  COMMAND ARGS...
 ```
+
++ `-v`, `--debug`
+    + print verbose information
