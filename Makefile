@@ -15,7 +15,8 @@ else
     VERSION:=v$(shell $(AWK) '/version/{ gsub(/[=\"]/,"",$$NF) ; print $$NF ; exit }' Cargo.toml)
 endif
 
-NAME:=$(subst -rs,,$(notdir $(CURDIR)))
+PACKAGE:=$(notdir $(CURDIR))
+NAME:=$(subst -rs,,$(PACKAGE))
 
 all:
 	@echo make dist/manifest/release/clean-dist
@@ -33,7 +34,7 @@ dist:
 	$(MAKE) _dist ARCH=x86_64 VENDOR=pc SYS=windows ABI=msvc
 
 manifest:
-	make-scoop-manifest *-windows-*.zip > $(NAME).json
+	make-scoop-manifest *-windows-*.zip > $(PACKAGE).json
 
 release:
 	gh release create -d --notes "" -t $(VERSION) $(VERSION) $(wildcard $(NAME)-$(VERSION)-*.zip)
