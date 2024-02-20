@@ -8,7 +8,7 @@ fn env(args: std::env::Args) -> Result<(), Box<dyn std::error::Error>> {
                 println!("setenv {}={}", field[0], field[1]);
             }
             std::env::set_var(field[0].clone(), field[1].clone())
-        } else if field[0] == "-d" {
+        } else if field[0] == "-v" || field[0] == "--debug" {
             debug = true
         } else {
             if debug {
