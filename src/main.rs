@@ -7,7 +7,7 @@ fn env(mut args: std::env::Args) -> Result<(), Box<dyn std::error::Error>> {
         let field: Vec<&str> = arg.splitn(2, '=').collect();
         if field.len() == 2 {
             if debug {
-                println!("setenv {}={}", field[0], field[1]);
+                eprintln!("setenv {}={}", field[0], field[1]);
             }
             std::env::set_var(field[0].clone(), field[1].clone())
         } else if field[0] == "-v" || field[0] == "--debug" {
@@ -29,7 +29,7 @@ fn env(mut args: std::env::Args) -> Result<(), Box<dyn std::error::Error>> {
             return Ok(());
         } else {
             if debug {
-                println!("call {}", arg);
+                eprintln!("call {}", arg);
             }
             let param: Vec<String> = args.collect();
             match std::process::Command::new(arg).args(param).status() {
