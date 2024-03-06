@@ -32,10 +32,18 @@ fn env(mut args: std::env::Args) -> Result<(), Box<dyn std::error::Error>> {
                 println!("call {}", arg);
             }
             let param: Vec<String> = args.collect();
-            if let Err(err) = std::process::Command::new(arg).args(param).status() {
-                return Err(Box::new(err));
-            } else {
-                return Ok(());
+            match std::process::Command::new(arg).args(param).status() {
+                Err(err) => {
+                    return Err(Box::new(err));
+                }
+                Ok(status) => {
+                    if debug {
+                        if let Some(code) = status.code() {
+                            eprintln!("exit status {}", code)
+                        }
+                    }
+                    return Ok(());
+                }
             }
         }
     }
