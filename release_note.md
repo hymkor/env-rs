@@ -2,9 +2,9 @@ v0.3.0
 ======
 Mar 6, 2024
 
-+ Fix: did not wait the child process finishs
++ Fix: did not wait the child process finishes
 + Print exit code with `-v`
-+ `-v`: Change output to STDERR instead of STDOUT
++ Change output with `-v` to STDERR instead of STDOUT
 
 v0.2.0
 =======
