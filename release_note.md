@@ -1,3 +1,7 @@
+v0.3.0
+======
+Mar 6, 2024
+
 + Fix: did not wait the child process finishs
 + Print exit code with `-v`
 + `-v`: Change output to STDERR instead of STDOUT
